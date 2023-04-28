@@ -1,0 +1,499 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+
+local Window = OrionLib:MakeWindow({Name = "HEE X HUB [4 KING]", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+
+local Tab = Window:MakeTab({
+
+	Name = "Main",	Icon = "rbxassetid://4483345998",
+
+	PremiumOnly = false
+
+})
+
+local Section = Tab:AddSection({
+
+	Name = ""
+
+})
+
+Tab:AddButton({
+
+	Name = "CHAT LOG",
+
+	Callback = function()
+
+     game:GetService("Players").LocalPlayer.PlayerGui.Chat.Frame.ChatChannelParentFrame.Visible = not game:GetService("Players").LocalPlayer.PlayerGui.Chat.Frame.ChatChannelParentFrame.Visible
+
+  	end    
+
+})
+
+Tab:AddToggle({
+
+	Name = "ONE SHOT",
+
+	Default = false,
+
+	Callback = function(Value)
+
+		_G.Ez = Value
+
+	end    
+
+})
+
+local a
+
+a = hookmetamethod(game,"__namecall",function(self,...)
+
+    local args = {...}
+
+    if getnamecallmethod() == "FireServer" and tostring(self) == "Attack_Server" then
+
+        if typeof(args[4]) == "table" and args[4]["BaseDamage"][1] and _G.Ez then
+
+            args[4]["BaseDamage"][1] = 10000000
+
+            args[4]["AttackDelay"] = 0
+
+            return a(self,unpack(args))
+
+        end
+
+    end
+
+    return a(self,...)
+
+end)
+
+Tab:AddToggle({
+
+	Name = "Kill All [ใช้หมัดด้วย]",
+
+	Default = false,
+
+	Callback = function(Value)
+
+		_G.All = Value
+
+	end    
+
+})
+
+spawn(function()
+
+    while wait() do
+
+        if _G.All then
+
+        pcall(function()    
+
+for i,v in next, (game:GetService("Players"):GetPlayers()) do
+
+    if v.Name ~= game:GetService("Players").LocalPlayer.Name then
+
+local args = {
+
+    [1] = v.Character,
+
+    [2] = game:GetService("Players").LocalPlayer.Character:FindFirstChild("\224\184\171\224\184\161\224\184\177\224\184\148").Handle,
+
+    [4] = {
+
+        ["AttackDelay"] = 0,
+
+        ["SoundsTable"] = {
+
+            [1] = {
+
+                ["pitch"] = {
+
+                    [1] = 1
+
+                },
+
+                ["delaysound"] = {
+
+                    [1] = 0
+
+                },
+
+                ["volume"] = {
+
+                    [1] = 0.5
+
+                },
+
+                ["timeposition"] = {
+
+                    [1] = 0.4
+
+                },
+
+                ["soundType"] = "Swing",
+
+                ["soundID"] = "rbxassetid://7944495372"
+
+            },
+
+            [2] = {
+
+                ["pitch"] = {
+
+                    [1] = 1
+
+                },
+
+                ["delaysound"] = {
+
+                    [1] = 0
+
+                },
+
+                ["volume"] = {
+
+                    [1] = 1
+
+                },
+
+                ["timeposition"] = {
+
+                    [1] = 0
+
+                },
+
+                ["soundType"] = "ImpactSound",
+
+                ["soundID"] = "rbxassetid://8646342913"
+
+            },
+
+            [3] = {
+
+                ["pitch"] = {
+
+                    [1] = 1
+
+                },
+
+                ["delaysound"] = {
+
+                    [1] = 0
+
+                },
+
+                ["volume"] = {
+
+                    [1] = 1
+
+                },
+
+                ["timeposition"] = {
+
+                    [1] = 0
+
+                },
+
+                ["soundType"] = "ImpactSound",
+
+                ["soundID"] = "rbxassetid://8646342913"
+
+            },
+
+            [4] = {
+
+                ["pitch"] = {
+
+                    [1] = 1
+
+                },
+
+                ["delaysound"] = {
+
+                    [1] = 0
+
+                },
+
+                ["volume"] = {
+
+                    [1] = 1
+
+                },
+
+                ["timeposition"] = {
+
+                    [1] = 0
+
+                },
+
+                ["soundType"] = "ImpactSound",
+
+                ["soundID"] = "rbxassetid://8646342913"
+
+            }
+
+        },
+
+        ["BaseDamage"] = {
+
+            [1] = 10000000
+
+        },
+
+        ["MiscTable"] = {
+
+            [1] = {
+
+                ["CriticalChance"] = {
+
+                    [1] = 1,
+
+                    [2] = 4
+
+                },
+
+                ["CriticalDamageIncrease"] = 5,
+
+                ["effectName"] = "AttackCriticalChance"
+
+            }
+
+        },
+
+        ["Handle1Hitbox"] = true,
+
+        ["Handle2Hitbox"] = false,
+
+        ["AnimationTable"] = {
+
+            [1] = {
+
+                ["ID"] = "rbxassetid://9401606785",
+
+                ["hitboxTimes"] = {
+
+                    [1] = 0,
+
+                    [2] = 0.5
+
+                },
+
+                ["animationType"] = "Attack",
+
+                ["speed"] = {
+
+                    [1] = 1.2
+
+                }
+
+            },
+
+            [2] = {
+
+                ["ID"] = "rbxassetid://9401654755",
+
+                ["hitboxTimes"] = {
+
+                    [1] = 0,
+
+                    [2] = 0.5
+
+                },
+
+                ["animationType"] = "Attack",
+
+                ["speed"] = {
+
+                    [1] = 0.87
+
+                }
+
+            },
+
+            [3] = {
+
+                ["ID"] = "rbxassetid://8296959920",
+
+                ["hitboxTimes"] = {
+
+                    [1] = 0,
+
+                    [2] = 0.5
+
+                },
+
+                ["animationType"] = "AttackCharge",
+
+                ["speed"] = {
+
+                    [1] = 1.75
+
+                }
+
+            },
+
+            [4] = {
+
+                ["ID"] = "rbxassetid://8296959920",
+
+                ["hitboxTimes"] = {
+
+                    [1] = 0,
+
+                    [2] = 0.5
+
+                },
+
+                ["animationType"] = "AttackMaxCharge",
+
+                ["speed"] = {
+
+                    [1] = 5
+
+                }
+
+            }
+
+        }
+
+    },
+
+    [5] = 1
+
+}
+
+game:GetService("Players").LocalPlayer.Character:FindFirstChild("\224\184\171\224\184\161\224\184\177\224\184\148").FEMeleeKitEvents.Attack.Attack_Server:FireServer(unpack(args))
+
+local args = {
+
+    [1] = v.Character.HumanoidRootPart.CFrame
+
+}
+
+game:GetService("Players").LocalPlayer.Character:FindFirstChild("\224\184\171\224\184\161\224\184\177\224\184\148").FEMeleeKitEvents.Attack.Initiate_Server:FireServer(unpack(args))
+
+    end
+
+end
+
+            end)
+
+        end
+
+    end
+
+end)
+
+local Tab2 = Window:MakeTab({
+
+	Name = "Player",
+
+	Icon = "rbxassetid://4483345998",
+
+	PremiumOnly = false
+
+})
+
+local Section = Tab:AddSection({
+
+	Name = ""
+
+})
+
+players = {}
+
+for i,v in pairs(game:GetService("Players"):GetChildren()) do
+
+   table.insert(players,v.Name)
+
+end
+
+Tab2:AddDropdown({
+
+	Name = "Select Player",
+
+	Default = "1",
+
+	Options = players,
+
+	Callback = function(Value)
+
+		Select = Value
+
+	end    
+
+})
+
+Tab2:AddButton({
+
+	Name = "Refresh!",
+
+	Callback = function()
+
+      	table.clear(players)
+
+for i,v in pairs(game:GetService("Players"):GetChildren()) do
+
+   table.insert(players,v.Name)
+
+end	
+
+  	end    
+
+})
+
+Tab2:AddButton({
+
+	Name = "Teleport!",
+
+	Callback = function()
+
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[Select].Character.HumanoidRootPart.CFrame
+
+	end    
+
+})
+
+local SettingsTab = Window:MakeTab({
+
+	Name = "Settings",
+
+	Icon = "rbxassetid://4483345998",
+
+	PremiumOnly = false
+
+})
+
+local SettingsSection = SettingsTab:AddSection({
+
+	Name = "Settings"
+
+})
+
+SettingsSection:AddButton({
+
+	Name = "Destroy UI",
+
+	Callback = function()
+
+        OrionLib:Destroy()
+
+  	end    
+
+})
+
+SettingsSection:AddBind({
+
+	Name = "Bind",
+
+	Default = Enum.KeyCode.E,
+
+	Hold = false,
+
+	Callback = function()
+
+		print("press")
+
+	end    
+
+})
